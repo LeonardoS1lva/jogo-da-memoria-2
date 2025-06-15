@@ -1,0 +1,74 @@
+/* app global css */
+
+:root {
+    --primary-color: #36da78;
+    --secondary-color: #122118;
+    --third-color: #264532;
+
+    --primary-color-dark: #2a9b5c;
+    --secondary-color-dark: #060f08;
+}
+
+* {
+    font-family: "Press Start 2P", system-ui;
+}
+
+h1 {
+    line-height: 1.5;
+}
+
+.background-style {
+    background-color: var(--secondary-color);
+}
+
+.title-shadow {
+    text-shadow: 8px 8px 0 rgba(22, 56, 35, 0.8);
+}
+
+.title-shadow-2 {
+    text-shadow: 4px 4px 0 rgba(22, 56, 35, 0.8);
+}
+
+.title-shadow-3 {
+    text-shadow: 2px 2px 0 rgba(22, 56, 35, 0.8);
+}
+
+.text-primary-color {
+    color: var(--primary-color);
+}
+
+.text-primary-color-dark {
+    color: var(--primary-color-dark);
+}
+
+.text-secondary-color {
+    color: var(--secondary-color);
+}
+
+.text-secondary-color-dark {
+    color: var(--secondary-color-dark);
+}
+
+.text-third-color {
+    color: var(--third-color);
+}
+
+.bg-primary-color {
+    background-color: var(--primary-color);
+}
+
+.bg-primary-color-dark {
+    background-color: var(--primary-color-dark);
+}
+
+.bg-secondary-color {
+    background-color: var(--secondary-color);
+}
+
+.bg-secondary-color-dark {
+    background-color: var(--secondary-color-dark);
+}
+
+.bg-third-color {
+    background-color: var(--third-color);
+}
