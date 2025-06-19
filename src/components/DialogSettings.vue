@@ -23,7 +23,7 @@ const updateVolume = () => {
 <template>
   <q-dialog v-model="showSettings" backdrop-filter="blur(2px)" persistent>
     <q-card class="settings-card q-pa-md text-white" style="background: rgba(0, 0, 0, 0.95)">
-      <h5 class="text-h5 text-center title-shadow-3 text-primary-color text-uppercase">
+      <h5 class="text-h5 text-center title-shadow-3 text-primary-color text-uppercase title-size">
         Configurações
       </h5>
       <div class="q-px-lg">
@@ -52,52 +52,32 @@ const updateVolume = () => {
       <div class="q-mt-md q-px-lg">
         <div class="row justify-between items-center">
           <span class="title-shadow-3">Efeitos:</span>
-          <q-toggle
-            v-model="audioStore.isEffectsActive"
-            color="primary-color"
-          />
+          <q-toggle v-model="audioStore.isEffectsActive" color="primary-color" />
         </div>
         <div class="text-center">
-          <small style="font-size: xx-small" class="text-grey-6">Ativar/Desativar efeitos sonoros</small>
+          <small style="font-size: xx-small" class="text-grey-6"
+            >Ativar/Desativar efeitos sonoros</small
+          >
         </div>
       </div>
       <div class="q-mt-md q-px-lg">
         <div class="row justify-between items-center">
           <span class="title-shadow-3">Música:</span>
-          <q-toggle
-            v-model="audioStore.isMusicActive"
-            color="primary-color"
-          />
+          <q-toggle v-model="audioStore.isMusicActive" color="primary-color" />
         </div>
         <div class="text-center">
-          <small style="font-size: xx-small" class="text-grey-6">Ativar/Desativar música de fundo</small>
+          <small style="font-size: xx-small" class="text-grey-6"
+            >Ativar/Desativar música de fundo</small
+          >
         </div>
       </div>
-      <!-- <div class="q-mt-md q-px-lg">
-        <span class="title-shadow-3">Volume dos Efeitos:</span>
-        <q-slider
-          v-model="audioStore.effectsVolume"
-          :min="0"
-          :max="1"
-          :step="0.1"
-          @change="
-            (audioStore.updateEffectsVolume(audioStore.effectsVolume), audioStore.playClickSound())
-          "
-          class="q-mt-md"
-          color="primary-color"
-          markers
-          track-color="grey-8"
-          track-size="8px"
-          thumb-size="32px"
-        />
-      </div> -->
       <div class="q-px-lg">
         <q-btn
           @click="closeDialog"
           label="Fechar"
           color="primary-color"
           text-color="secondary-color"
-          class="text-subtitle2 q-my-md full-width"
+          class="text-subtitle2 q-mt-md full-width"
           style="border-radius: 8px"
           size="md"
           no-caps
@@ -106,3 +86,11 @@ const updateVolume = () => {
     </q-card>
   </q-dialog>
 </template>
+
+<style scoped>
+@media (max-width: 600px) {
+  .title-size {
+    font-size: 1.2rem;
+  }
+}
+</style>

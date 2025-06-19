@@ -57,6 +57,16 @@ export const useAudioStore = defineStore('audio', {
         }
       }
     },
+    restoreAudioSettings() {
+      const data = localStorage.getItem('audioSettings')
+      if (data) {
+        const settings = JSON.parse(data)
+        this.musicVolume = settings.musicVolume ?? 0.2
+        this.effectsVolume = settings.effectsVolume ?? 0.2
+        this.isMusicActive = settings.isMusicActive ?? true
+        this.isEffectsActive = settings.isEffectsActive ?? true
+      }
+    }
   },
 })
 
@@ -88,4 +98,20 @@ watch(
       store.effectsVolume = 0
     }
   },
+
+  watch(
+    () => [store.musicVolume, store.effectsVolume, store.isMusicActive, store.isEffectsActive],
+    ([musicVolume, effectsVolume, isMusicActive, isEffectsActive]) => {
+      localStorage.setItem(
+        'audioSettings',
+        JSON.stringify({
+          musicVolume,
+          effectsVolume,
+          isMusicActive,
+          isEffectsActive,
+        }),
+      )
+    },
+    { deep: true },
+  ),
 )

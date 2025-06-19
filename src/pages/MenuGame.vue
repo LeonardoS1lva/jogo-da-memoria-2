@@ -7,6 +7,7 @@ import DialogSettings from 'src/components/DialogSettings.vue'
 
 const router = useRouter()
 const audioStore = useAudioStore()
+audioStore.restoreAudioSettings()
 
 const showSettings = ref(false)
 

@@ -6,6 +6,7 @@ import { ref } from 'vue'
 
 const router = useRouter()
 const audioStore = useAudioStore()
+audioStore.restoreAudioSettings()
 
 const levelDifficulty = ref('')
 
@@ -89,10 +90,6 @@ useAudioVisibility()
   border-radius: 20px;
 }
 
-.menu-title {
-  font-size: 2.5rem;
-}
-
 .shadow-btn {
   box-shadow: 4px 4px 0 #000;
 }
@@ -103,15 +100,4 @@ useAudioVisibility()
   box-shadow: 4px 4px 0 #000;
 }
 
-@media (max-width: 600px) {
-  .menu-title {
-    font-size: 1.9rem;
-  }
-}
-
-@media (max-width: 400px) {
-  .menu-title {
-    font-size: 1.5rem;
-  }
-}
 </style>

@@ -7,6 +7,11 @@
 
     --primary-color-dark: #2a9b5c;
     --secondary-color-dark: #060f08;
+
+    --first-place-color: #ffb700;
+    --second-place-color: #d3cdcd;
+    --third-place-color: #cd7f32;
+    --default-place-color: #acacac;
 }
 
 * {
@@ -15,6 +20,10 @@
 
 h1 {
     line-height: 1.5;
+}
+
+.menu-title {
+    font-size: 2.5rem;
 }
 
 .background-style {
@@ -53,6 +62,24 @@ h1 {
     color: var(--third-color);
 }
 
+.text-first-place-color {
+    color: var(--first-place-color);
+}
+
+.text-second-place-color {
+    color: var(--second-place-color);
+}
+
+.text-third-place-color {
+    color: var(--third-place-color);
+}
+
+.text-default-place-color {
+    color: var(--default-place-color);
+}
+
+
+
 .bg-primary-color {
     background-color: var(--primary-color);
 }
@@ -71,4 +98,32 @@ h1 {
 
 .bg-third-color {
     background-color: var(--third-color);
+}
+
+.bg-first-place-color {
+    background-color: var(--first-place-color);
+}
+
+.bg-second-place-color {
+    background-color: var(--second-place-color);
+}
+
+.bg-third-place-color {
+    background-color: var(--third-place-color);
+}
+
+.bg-default-place-color {
+    background-color: var(--default-place-color);
+}
+
+@media (max-width: 600px) {
+    .menu-title {
+        font-size: 1.9rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .menu-title {
+        font-size: 1.5rem;
+    }
 }

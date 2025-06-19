@@ -1,12 +1,19 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, onUnmounted, ref } from 'vue'
 import { useAudioStore } from 'src/stores/audioStore'
+import { useScoreStore } from 'src/stores/scoreStore'
 
 import { onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useAudioVisibility } from 'src/composable/useAudioVisibility'
 
 const audioStore = useAudioStore()
+audioStore.restoreAudioSettings()
+
+const scoreStore = useScoreStore()
+
+const elapsedTime = ref(0)
+
 const router = useRouter()
 const route = useRoute()
 
@@ -53,6 +60,8 @@ const initGame = () => {
   flippedCards.value = []
   matchedCards.value = 0
   gameOver.value = false
+  scoreStore.loadHighScores()
+  startTimer()
 }
 
 const revealCard = (index) => {
@@ -76,6 +85,8 @@ const checkMatch = () => {
   if (cards.value[firstIndex].icon === cards.value[secondIndex].icon) {
     matchedCards.value += 1
     if (matchedCards.value === cards.value.length / 2) {
+      scoreStore.calculateScore(elapsedTime.value, difficulty.value)
+      scoreStore.setHighScore(scoreStore.getScore, difficulty.value)
       gameOver.value = true
     }
     flippedCards.value = []
@@ -95,20 +106,40 @@ const backToMenu = () => {
 
 useAudioVisibility()
 
+let timer = null
+
+const startTimer = () => {
+  elapsedTime.value = 0
+  timer = setInterval(() => {
+    if (gameOver.value) {
+      clearInterval(timer)
+    } else {
+      elapsedTime.value++
+    }
+  }, 1000)
+}
+
 onMounted(() => {
   initGame()
+  scoreStore.loadHighScores()
+})
+
+onUnmounted(() => {
+  clearInterval(timer)
 })
 </script>
 
 <template>
   <q-page class="row justify-center background-style">
     <q-card
+      flat
       class="card-game text-center"
       style="background: transparent"
       :style="cards.length > 36 && 'width: 100%; max-width: 1000px;'"
     >
-      <h1 class="text-subtitle1  text-white title-shadow-3">
-        Nível: {{ getDifficultyLabel(difficulty) }}
+      <h1 class="text-subtitle1 text-white title-shadow-3">
+        <div>Nível: {{ getDifficultyLabel(difficulty) }}</div>
+        <div>{{ String(Math.floor(elapsedTime / 60)).padStart(2, '0') }}:{{ String(elapsedTime % 60).padStart(2, '0') }}</div>
       </h1>
       <div :class="cards.length > 36 ? 'container-cards' : 'row justify-center'">
         <div
@@ -119,15 +150,16 @@ onMounted(() => {
           <q-btn
             :label="card.revealed ? card.icon : '❓'"
             class="card-btn q-mb-md"
-            :class="card.revealed ? 'bg-primary-color-dark' : 'bg-third-color'"
+            :class="card.revealed ? 'bg-white' : 'bg-third-color'"
             @click="revealCard(index)"
             :disabled="card.revealed || gameOver"
-            style="box-shadow: inset 0 0 0 2px var(--primary-color);"
+            style="box-shadow: inset 0 0 0 2px var(--primary-color); text-shadow: 0 0 100px rgba(0, 0, 0);"
           />
         </div>
       </div>
       <div v-if="gameOver" class="text-center q-px-lg q-pb-md">
         <p class="text-white q-my-md title-shadow-3" style="font-size: 1.2rem">Parabéns! Você completou o jogo!</p>
+        <p class="text-white q-my-md title-shadow-3" style="font-size: 1.2rem">Sua pontuação: {{ scoreStore.getScore }}</p>
         <div class="row justify-center q-col-gutter-md">
           <div class="col-12 col-md-4">
             <q-btn
