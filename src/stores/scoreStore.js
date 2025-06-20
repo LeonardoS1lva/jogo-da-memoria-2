@@ -1,4 +1,4 @@
-import { defineStore, acceptHMRUpdate } from 'pinia'
+import { defineStore } from 'pinia'
 
 export const useScoreStore = defineStore('scoreStore', {
   state: () => ({
@@ -54,21 +54,6 @@ export const useScoreStore = defineStore('scoreStore', {
       } else if (difficulty === 'hard') {
         this.score = Math.max(0, Math.floor(2000000 / elapsedTime))
       }
-    }
-  }
+    },
+  },
 })
-
-
-
-
-
-
-
-
-
-
-
-//
-if (import.meta.hot) {
-  import.meta.hot.accept(acceptHMRUpdate(useScoreStore, import.meta.hot))
-}

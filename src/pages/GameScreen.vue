@@ -7,6 +7,8 @@ import { onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useAudioVisibility } from 'src/composable/useAudioVisibility'
 
+import DialogWinner from 'src/components/DialogWinner.vue'
+
 const audioStore = useAudioStore()
 audioStore.restoreAudioSettings()
 
@@ -157,35 +159,7 @@ onUnmounted(() => {
           />
         </div>
       </div>
-      <div v-if="gameOver" class="text-center q-px-lg q-pb-md">
-        <p class="text-white q-my-md title-shadow-3" style="font-size: 1.2rem">Parabéns! Você completou o jogo!</p>
-        <p class="text-white q-my-md title-shadow-3" style="font-size: 1.2rem">Sua pontuação: {{ scoreStore.getScore }}</p>
-        <div class="row justify-center q-col-gutter-md">
-          <div class="col-12 col-md-4">
-            <q-btn
-              @click="resetGame"
-              label="Novo Jogo"
-              color="primary-color"
-              text-color="secondary-color"
-              class="reset-btn full-width"
-              size="md"
-              padding="0.8rem 1.5rem"
-              style="border-radius: 8px"
-            />
-          </div>
-          <div class="col-12 col-md-4">
-            <q-btn
-              @click="backToMenu"
-              label="Voltar ao Menu"
-              color="third-color"
-              class="reset-btn q-ml-md full-width"
-              size="md"
-              padding="0.8rem 1.5rem"
-              style="border-radius: 8px"
-            />
-          </div>
-        </div>
-      </div>
+      <DialogWinner v-if="gameOver" @back-to-menu="backToMenu" @new-game="resetGame" />
     </q-card>
   </q-page>
 </template>

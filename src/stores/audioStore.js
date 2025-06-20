@@ -1,9 +1,12 @@
 import { defineStore } from 'pinia'
 import { watch } from 'vue'
 
+const MAX_VOLUME = 0.3
+
 export const useAudioStore = defineStore('audio', {
   state: () => ({
     backgroundMusic: new Audio('/sounds/8_bit_nostalgia.mp3'),
+    clickSound: new Audio('/sounds/click.wav'),
     musicVolume: 0.2,
     effectsVolume: 0.2,
     isMusicPausedVisibility: false,
@@ -14,7 +17,7 @@ export const useAudioStore = defineStore('audio', {
     playBackgroundMusic() {
       if (this.backgroundMusic.paused) {
         this.backgroundMusic.loop = true
-        this.backgroundMusic.volume = this.musicVolume
+        this.backgroundMusic.volume = this.musicVolume * MAX_VOLUME
         if (this.isMusicActive) {
           this.backgroundMusic.play().catch((e) => {
             console.warn('Erro ao tocar música de fundo:', e)
@@ -28,19 +31,19 @@ export const useAudioStore = defineStore('audio', {
     },
     updateMusicVolume(volume) {
       this.musicVolume = volume
-      this.backgroundMusic.volume = volume
+      this.backgroundMusic.volume = volume * MAX_VOLUME
     },
     playClickSound() {
-      const clickSound = new Audio('/sounds/click.wav')
-      clickSound.volume = this.effectsVolume
+      this.clickSound.volume = this.effectsVolume * MAX_VOLUME
       if (this.isEffectsActive) {
-        clickSound.play().catch((e) => {
+        this.clickSound.play().catch((e) => {
           console.warn('Erro ao tocar som de clique:', e)
         })
       }
     },
     updateEffectsVolume(volume) {
       this.effectsVolume = volume
+      this.clickSound.volume = volume * MAX_VOLUME
     },
     handleVisibilityChange() {
       if (document.hidden) {

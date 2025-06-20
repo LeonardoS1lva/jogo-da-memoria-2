@@ -15,14 +15,14 @@ const closeDialog = () => {
 
 const updateVolume = () => {
   audioStore.updateMusicVolume(audioStore.musicVolume)
-  audioStore.updateEffectsVolume(audioStore.effectsVolume)
+  audioStore.updateEffectsVolume(audioStore.musicVolume)
   audioStore.playClickSound()
 }
 </script>
 
 <template>
   <q-dialog v-model="showSettings" backdrop-filter="blur(2px)" persistent>
-    <q-card class="settings-card q-pa-md text-white" style="background: rgba(0, 0, 0, 0.95)">
+    <q-card class="q-pa-md text-white" style="background: rgba(0, 0, 0, 0.95)">
       <h5 class="text-h5 text-center title-shadow-3 text-primary-color text-uppercase title-size">
         Configurações
       </h5>
@@ -55,9 +55,9 @@ const updateVolume = () => {
           <q-toggle v-model="audioStore.isEffectsActive" color="primary-color" />
         </div>
         <div class="text-center">
-          <small style="font-size: xx-small" class="text-grey-6"
-            >Ativar/Desativar efeitos sonoros</small
-          >
+          <small style="font-size: xx-small" class="text-grey-6">
+            Ativar/Desativar efeitos sonoros
+          </small>
         </div>
       </div>
       <div class="q-mt-md q-px-lg">
@@ -66,9 +66,9 @@ const updateVolume = () => {
           <q-toggle v-model="audioStore.isMusicActive" color="primary-color" />
         </div>
         <div class="text-center">
-          <small style="font-size: xx-small" class="text-grey-6"
-            >Ativar/Desativar música de fundo</small
-          >
+          <small style="font-size: xx-small" class="text-grey-6">
+            Ativar/Desativar música de fundo
+          </small>
         </div>
       </div>
       <div class="q-px-lg">

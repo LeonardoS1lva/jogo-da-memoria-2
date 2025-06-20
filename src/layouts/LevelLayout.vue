@@ -4,7 +4,7 @@ import TabFooter from 'src/components/TabFooter.vue'
 
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header class="bg-secondary-color">
+    <q-header class="bg-secondary-color q-pt-md">
       <q-toolbar>
         <div class="col-1"></div>
         <div class="col-1">

@@ -1,6 +1,6 @@
 {
-  "orientation": "natural",
-  "background_color": "#000000",
+  "orientation": "portrait",
+  "background_color": "#36da78",
   "theme_color": "#36da78",
   "icons": [
     {
@@ -60,11 +60,11 @@
     }
   ],
   "categories": ["games", "arcade", "retro", "puzzle"],
-  "display": "standalone",
+  "display": "fullscreen",
   "start_url": "/",
   "name": "Jogo da Memória",
   "short_name": "Jogo da Memória",
-  "description": "Um jogo de memória divertido para todas as idades. Teste sua memória e divirta-se!",
+  "description": "Um jogo da memória divertido para todas as idades. Teste sua memória e divirta-se!",
   "lang": "pt-BR",
   "dir": "ltr",
   "scope": "/",
@@ -74,30 +74,30 @@
   "prefer_related_applications": false,
   "screenshots": [
     {
-      "src": "screenshots/screenshot_game.webp",
+      "src": "screenshots/screenshot_game_easy_desktop.webp",
       "sizes": "1920x953",
       "type": "image/webp",
       "form_factor": "wide"
     },
     {
-      "src": "screenshots/screenshot_game_mobile.webp",
-      "sizes": "1082x1733",
+      "src": "screenshots/screenshot_game_easy_mobile.webp",
+      "sizes": "1082x1922",
       "type": "image/webp",
       "form_factor": "narrow"
     },
     {
-      "src": "screenshots/tela_game.png",
-      "sizes": "1920x953",
+      "src": "screenshots/screenshot_menu_mobile.webp",
+      "sizes": "1082x1733",
       "type": "image/png"
     },
     {
-      "src": "screenshots/tela_game.png",
-      "sizes": "1920x953",
+      "src": "screenshots/screenshot_levels_mobile.webp",
+      "sizes": "1082x1922",
       "type": "image/png"
     },
     {
-      "src": "screenshots/tela_menu.png",
-      "sizes": "1920x953",
+      "src": "screenshots/screenshot_highscore_mobile.webp",
+      "sizes": "1082x1922",
       "type": "image/png"
     }
   ],

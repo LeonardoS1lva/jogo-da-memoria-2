@@ -68,11 +68,6 @@ useAudioVisibility()
   width: 90%;
   max-width: 1000px;
 }
-.settings-card {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 15px;
-}
 
 @media (max-width: 600px) {
   .title-shadow {
