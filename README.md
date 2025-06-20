@@ -9,6 +9,10 @@ A simple memory game with an 8-bit theme, built using Quasar Framework.
 - Match pairs of identical cards.
 - Finish as fast as you can to get a higher score! 
 
+## Play the Game
+
+👉 [Play now!](https://jogo-da-memoria-2-nu.vercel.app/)
+
 ## Table of Contents
 
 - [Jogo da Memoria (Memory Game)](#jogo-da-memoria-memory-game)
