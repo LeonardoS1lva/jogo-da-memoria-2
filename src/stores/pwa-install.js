@@ -7,12 +7,16 @@ export const usePwaInstallStore = defineStore("pwaInstall", () => {
 
   let deferredPrompt = null;
 
-  function setPrompt(prompt) {
-    deferredPrompt = prompt;
-    canInstallPWA.value = true;
-  }
+  const setPrompt = (prompt) => {
+      deferredPrompt = prompt;
+      canInstallPWA.value = true;
+    };
 
-  async function installPWA() {
+  const setIOS = () => {
+    canInstallPWA.value = true;
+  };
+
+  const installPWA = async () => {
     if (!deferredPrompt) return false;
 
     deferredPrompt.prompt();
@@ -26,13 +30,13 @@ export const usePwaInstallStore = defineStore("pwaInstall", () => {
     deferredPrompt = null;
 
     return outcome === "accepted";
-  }
+  };
 
-  function markAsInstalled() {
+  const markAsInstalled = () => {
     isInstalled.value = true;
     canInstallPWA.value = false;
     deferredPrompt = null;
-  }
+  };
 
   return {
     canInstallPWA,
