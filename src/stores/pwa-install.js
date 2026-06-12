@@ -43,6 +43,7 @@ export const usePwaInstallStore = defineStore("pwaInstall", () => {
     isInstalled,
     installPWA,
     setPrompt,
+    setIOS,
     markAsInstalled,
   };
 });
